@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/js/lib/bootstrap/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/css/message.css' />
+  </head>
+<body>
+  <div>
+    <h1><%= title %></h1>
+
+<!--     <p>Welcome to <%= title %></p> -->
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">用户管理</a></li>
+      <li role="presentation"><a href="#NBA_Set" role="tab" data-toggle="tab">nba仓库管理</a></li>
+      <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">消息管理</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <table class="table table-bordered">
+          <caption>用户信息</caption>
+          <thead>
+            <tr >
+              <td>用户id</td>
+              <td>用户名称</td>
+              <td>用户密码</td>
+              <td>用户邮箱</td>
+              <td>用户电话号码</td>
+              <td>设置编号</td>
+              <td>操作</td>
+            </tr>
+          </thead>
+          <tbody>  
+                <%for(var i=0;i<usersResult.length;i++){%>
+                  <tr class="info">
+                    <%for(var item in usersResult[i]){%>
+                      <td><%=usersResult[i][item]%></td>
+                    <%}%>   
+                    <td><button data-uno="<%=usersResult[i].uno[0]%>" data-messageSet_no="<%=usersResult[i].messageSet_no%>" class="btn btn-danger btn-sm delete_button">删除</button></td>    
+                  </tr>
+                <%}%>   
+          </tbody>
+        </table>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="NBA_Set">
+      </div>
+      <div role="tabpanel" class="tab-pane" id="messages">消息管理</div>
+
+    </div>
+
+  </div>
+  
+  </body>
+  <script src="/js/lib/jquery-3.1.1.min.js"></script>
+  <script src="/js/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/manage_web.js"></script>
+    
+</html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" style="margin: 25px;">
+        <p id="ajaxMsg"></p>
+         <button type="button" style="position: absolute;top: 10px;right: 10px;" class="btn btn-info" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="loddingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" style="margin: 25px;">
+        <p >加载中</p>
+      </div>
+    </div>
+  </div>
+</div>
+

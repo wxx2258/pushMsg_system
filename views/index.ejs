@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/js/lib/bootstrap/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+  </head>
+<body>
+  <div class="loginPage">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form id="login_form">
+      <p>
+        <label for="userName">用户名：</label>
+        <input placeholder="输入用户名" class="form-control inputmsg" type="text" value="" name="userName">
+      </p>
+      <p>
+        <label for="passwords">密码：</label>
+        <input placeholder="输入密码" class="form-control inputmsg" type="password" value="" name="passwords">
+      </p>
+      <button class="btn btn-primary sendButton" id="signIn">登录</button>
+    </form>
+    <form id="sign_form">
+      <p>
+        <label for="userName">用户名：</label>
+        <input placeholder="输入用户名" class="form-control inputmsg" type="text" value="" name="userName">
+      </p>
+      <p>
+        <label for="email">邮箱：</label>
+        <input placeholder="输入邮箱" class="form-control inputmsg" type="text" value="" name="email">  
+      </p>
+      <p>
+        <label for="mobilephone">电话：</label>
+        <input placeholder="输入电话" class="form-control inputmsg" type="text" value="" name="mobilephone">  
+      </p>
+      <p>
+        <label for="passwords">密码：</label>
+        <input placeholder="输入密码" class="form-control inputmsg" type="password" value="" name="passwords">
+        
+      </p>
+      <button class="btn btn-primary sendButton" id="login" >注册</button>   
+    </form> 
+  </div>
+	
+  </body>
+  <script src="/js/lib/jquery-3.1.1.min.js"></script>
+  <script src="/js/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/index.js"></script>
+</html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" style="margin: 25px;">
+        <p id="ajaxMsg"></p>
+         <button type="button" style="position: absolute;top: 10px;right: 10px;" class="btn btn-info" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

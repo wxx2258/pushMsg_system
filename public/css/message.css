@@ -1,0 +1,50 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+a:hover{
+	text-decoration:none;
+}
+
+/*标签标题*/
+.panel-title>a{
+	color:red;
+}
+
+/*标签内容*/
+.tab-content>.active {
+	border: 1px solid #ccc;
+}
+
+form{
+	border:2px solid #ccc;
+	margin-top: 20px;
+	position: relative;
+}
+form label{
+	width:150px;
+	text-align: right;
+}
+form .form-control{
+	width: 500px;
+	display: inline-block;
+	margin: 10px;
+}
+
+form .sendButton{
+	position: absolute;
+	bottom: 20px;
+	margin-left: 700px;
+}
+
+#update{
+	float: right;
+}
+
+.btn-sm{
+	padding: 0 10px;
+}

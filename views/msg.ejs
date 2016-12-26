@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/js/lib/bootstrap/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/css/message.css' />
+  </head>
+<body>
+  <div>
+    <h1><%= title %></h1>
+    <button class="btn btn-info" id="update">更新消息</button>
+<!--     <p>Welcome to <%= title %></p> -->
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+      <li role="presentation"><a href="#NBA_Set" role="tab" data-toggle="tab">NBA_Set</a></li>
+      <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
+      <li role="presentation"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">
+      <!-- 标签内容开头 -->
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  NBA模块消息
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <table class="table table-bordered">
+                  <caption>球员信息</caption>
+                  <thead>
+                    <tr >
+                      <td>球队名称</td>
+                      <td>球队排名</td>
+                      <td>球队所属地区</td>
+                    </tr>
+                  </thead>
+                  <tbody>  
+                        <%for(var i=0;i<result_teams.length;i++){%>
+                          <tr class="info">       
+                            <td><%=result_teams[i].teamName%></td>
+                            <td><%=result_teams[i].teamRank%></td>
+                            <td><%=result_teams[i].teampart%></td>
+                          </tr>
+                        <%}%>   
+                  </tbody>
+                </table>
+                <table class="table table-bordered">
+                  <caption>球员最近一场数据</caption>
+                  <thead>
+                    <tr >
+                      <td>球员姓名</td>
+                      <td>日期 </td>
+                      <td>对手 </td>
+                      <td>比分 </td>
+                      <td>时间 </td>
+                      <td>投篮 </td>
+                      <td>命中率</td>
+                      <td>三分 </td>
+                      <td>命中率</td>
+                      <td>罚球 </td>
+                      <td>命中率</td>
+                      <td>篮板 </td>
+                      <td>助攻 </td>
+                      <td>抢断 </td>
+                      <td>盖帽 </td>
+                      <td>失误 </td>
+                      <td>犯规 </td>
+                      <td>得分</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%for(var i=0;i<result_playlast.length;i++){%>
+                      <tr class="info">       
+                        <%for(var item in result_playlast[i][0]){%>
+                          <td><%=result_playlast[i][0][item]%></td>
+                        <%}%> 
+                      </tr>
+                    <%}%>   
+                  </tbody>
+                </table>
+                <table class="table table-bordered">
+                  <caption>球员场均数据</caption>
+                  <thead>
+                    <tr >
+                      <td>球员姓名</td>
+                      <td>场次 </td>
+                      <td>时间 </td>
+                      <td>投篮 </td>
+                      <td>命中率</td>
+                      <td>三分 </td>
+                      <td>命中率</td>
+                      <td>罚球 </td>
+                      <td>命中率</td>
+                      <td>篮板 </td>
+                      <td>助攻 </td>
+                      <td>抢断 </td>
+                      <td>盖帽 </td>
+                      <td>失误 </td>
+                      <td>犯规 </td>
+                      <td>得分</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%for(var i=0;i<result_playavg.length;i++){%>
+                      <tr class="info">       
+                        <%for(var item in result_playavg[i][0]){%>
+                          <td><%=result_playavg[i][0][item]%></td>
+                        <%}%> 
+                      </tr>
+                    <%}%>   
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- 标签内容结尾 -->
+      </div>
+      <div role="tabpanel" class="tab-pane" id="NBA_Set">
+        <form id="nba_team_form">
+          <input type="hidden" name="messageSet_no" value="<%= uno %>">
+          <input type="hidden" name="moduleName" value="nba">
+          <input type="hidden" name="property_name" value="nba_team">
+          <p>
+            <label for="property_value">关注的球队：</label>
+            <input placeholder="输入球队名，格式为：'马刺，勇士'" class="form-control inputmsg" type="text" value="<%= teamVal %>" name="property_value">
+          </p>
+          <input type="hidden" name="dataHouse_no" value="0">
+          <button class="btn btn-primary sendButton" id="nba_team_send">提交</button>
+        </form>
+        <form id="nba_player_form">
+          <input type="hidden" name="messageSet_no" value="<%= uno %>">
+          <input type="hidden" name="moduleName" value="nba">
+          <input type="hidden" name="property_name" value="nba_player">
+          <p>
+            <label for="property_value">关注的球员：</label>
+            <input placeholder="输入球队名，格式为：'火箭-哈登，勇士-库里'" class="form-control inputmsg" type="text" value="<%= playerVal %>" name="property_value" id="inputplayer_msg">
+          </p>
+          <input type="hidden" name="dataHouse_no" value="0">
+          <button class="btn btn-primary sendButton" id="nba_player_send">提交</button>
+        </form>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="messages">messages</div>
+      <div role="tabpanel" class="tab-pane" id="settings">settings</div>
+    </div>
+
+  </div>
+  
+  </body>
+  <script src="/js/lib/jquery-3.1.1.min.js"></script>
+  <script src="/js/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/message.js"></script>
+</html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" style="margin: 25px;">
+        <p id="ajaxMsg"></p>
+         <button type="button" style="position: absolute;top: 10px;right: 10px;" class="btn btn-info" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="loddingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" style="margin: 25px;">
+        <p >加载中</p>
+      </div>
+    </div>
+  </div>
+</div>
+

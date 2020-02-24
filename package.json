@@ -8,7 +8,6 @@
   "dependencies": {
     "co": "^4.6.0",
     "debug": "^2.2.0",
-    "ejs": "~2.3.3",
     "koa": "^1.1.2",
     "koa-bodyparser": "^2.0.1",
     "koa-json": "^1.1.1",
@@ -21,6 +20,7 @@
   "devDependencies": {
     "cheerio": "^0.22.0",
     "co": "^4.6.0",
+    "ejs": "^2.3.4",
     "koa-body": "^1.6.0",
     "mssql": "^3.3.0",
     "superagent": "^3.3.1"
